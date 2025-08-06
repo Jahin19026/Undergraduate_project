@@ -2,6 +2,8 @@ library(tidyverse)
 library(openxlsx)
 library(rcompanion)
 
+###Bi-variate Analysis
+
 data <- read.xlsx("project data.xlsx")
 
 
@@ -230,4 +232,5 @@ data %>%
 t11<-table(data$Job_Status,data$Factors_Responsible_for_Variations)
 chisq.test(t11)
 cramerV(t11) ## 0.06027 
+
 
