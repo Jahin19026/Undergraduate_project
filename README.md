@@ -4,8 +4,10 @@ This project analyzes how job status (Government vs Non-government employment) i
 
 ## 📊 Objective
 
-To explore whether there are statistically significant differences in the financial behavior, economic perceptions, and coping strategies between government and non-government employees.
-
+* To find out the impact of commodities prices due to Russia-Ukraine war. 
+* To explore the impact of commodities prices on government and non-government employees by univariate analysis. 
+* To examine the association between rising commodities prices on government and non-government employees due to Russia-Ukraine war.
+  
 ## 📁 Dataset
 
 The dataset (`project data.xlsx`) consists of survey responses from government and non-government employees, covering variables like:
