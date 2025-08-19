@@ -1,0 +1,44 @@
+Monthly Expenditure Analysis
+Overview
+
+This project analyzes the relationship between monthly income, job status, mental health factors, and monthly expenditure using survey data. The goal is to identify key predictors of household spending patterns and provide insights into financial behavior.
+
+Dataset
+
+The dataset contains information on individuals’ monthly income, monthly expenditure, job status, and mental health concerns. Key variables include:
+
+Monthly_income – reported income range of the respondent.
+
+Monthly_expenditure – reported expenditure range of the respondent.
+
+Job_Status – type of employment (Government / Non-government).
+
+Mental_Health – financial stress and other concerns (e.g., Inflation Concerns, Job Insecurity).
+
+The income and expenditure ranges were converted to numeric midpoints for analysis.
+
+Analysis
+
+Data Cleaning:
+
+Standardized dash characters in income and expenditure ranges.
+
+Converted categorical income/expenditure ranges into numeric midpoints.
+
+Regression Model:
+
+Dependent variable: Monthly_expenditure_num
+
+Independent variables: Monthly_income_num, Job_Status, Mental_Health
+
+Model: Linear regression
+
+Results:
+
+Income is the strongest predictor of monthly expenditure.
+
+Job status shows a marginal effect (non-government workers spend slightly more).
+
+Mental health factors were not statistically significant predictors in this dataset.
+
+The model explains ~77% of the variance in expenditure (Adjusted R² = 0.7637).
