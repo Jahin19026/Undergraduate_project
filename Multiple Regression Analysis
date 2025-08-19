@@ -1,1 +1,53 @@
+# Load necessary libraries
+library(readxl)   # for reading Excel files
+library(dplyr)    # for data manipulation
+
+# 1. Load your dataset
+df <- read_excel("project data.xlsx")
+
+# 2. Check structure of the data
+str(df)
+summary(df)
+
+# 3.need to convert categorical variables to factors
+df$Job_Status <- as.factor(df$`Job_Status`)
+df$Mental_Health <- as.factor(df$`Mental_Health_and_Well_being_of_Employees`)
+
+# Normalize dashes and spaces for expenditure
+df <- df %>%
+  mutate(
+    Monthly_expenditure = str_squish(str_replace_all(Monthly_expenditure, "[–—]", "-")),
+    Monthly_expenditure_num = case_when(
+      str_detect(Monthly_expenditure, regex("below\\s*20,?000", ignore_case = TRUE)) ~ 10000,
+      str_detect(Monthly_expenditure, regex("20\\s*-\\s*35,?000", ignore_case = TRUE)) ~ 27500,
+      str_detect(Monthly_expenditure, regex("35\\s*-\\s*50,?000", ignore_case = TRUE)) ~ 42500,
+      str_detect(Monthly_expenditure, regex("50\\s*-\\s*70,?000", ignore_case = TRUE)) ~ 60000,
+      str_detect(Monthly_expenditure, regex("above\\s*70,?000", ignore_case = TRUE)) ~ 80000,
+      TRUE ~ NA_real_
+    ),
+    Monthly_income = str_squish(str_replace_all(Monthly_income, "[–—]", "-")),
+    Monthly_income_num = case_when(
+      str_detect(Monthly_income, regex("below\\s*20,?000", ignore_case = TRUE)) ~ 10000,
+      str_detect(Monthly_income, regex("20\\s*-\\s*35,?000", ignore_case = TRUE)) ~ 27500,
+      str_detect(Monthly_income, regex("35\\s*-\\s*50,?000", ignore_case = TRUE)) ~ 42500,
+      str_detect(Monthly_income, regex("50\\s*-\\s*75,?000", ignore_case = TRUE)) ~ 62500,
+      str_detect(Monthly_income, regex("above\\s*75,?000", ignore_case = TRUE)) ~ 80000,
+      TRUE ~ NA_real_
+    )
+  )
+
+# Check the new columns
+head(df %>% select(Monthly_expenditure_num, Monthly_income_num, Job_Status, Mental_Health))
+
+
+# 4.Predict 'Monthly expenditure' using other variables
+model <- lm(Monthly_expenditure_num ~ Monthly_income_num + Job_Status + Mental_Health, data = df)
+
+# 5. View regression summary
+summary(model)
+
+# 6. Diagnostic plots (optional)
+windows()
+par(mfrow = c(2, 2))
+plot(model)
 
