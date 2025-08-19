@@ -7,6 +7,7 @@ This project analyzes how job status (Government vs Non-government employment) i
 * To find out the impact of commodities prices due to Russia-Ukraine war. 
 * To explore the impact of commodities prices on government and non-government employees by univariate analysis. 
 * To examine the association between rising commodities prices on government and non-government employees due to Russia-Ukraine war.
+* Analyzes the relationship between monthly income, job status, mental health factors, and monthly expenditure to identify key predictors of household spending patterns and provide insights into financial behavior
   
 ## 📁 Dataset
 
@@ -30,7 +31,7 @@ The R script includes:
   - **Fisher's Exact Test** (for small expected frequencies)
   - **Cramér’s V** to measure the strength of association
 
-## 📈 Visualizations
+## 📈 Visualizations of Bivariate Analysis
 
 Bar plots were generated for each variable, grouped by Job Status, showing frequency counts and annotated with exact values for clarity.
 
@@ -47,5 +48,8 @@ Bar plots were generated for each variable, grouped by Job Status, showing frequ
 - `tidyverse`
 - `openxlsx`
 - `rcompanion` (for Cramér's V)
+
+
+
 
 
